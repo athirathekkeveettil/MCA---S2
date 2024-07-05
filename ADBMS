@@ -1,0 +1,11 @@
+select reserves.sid from reserves,boat where reserves.bid=boat.bid and color='red' union select reserves.sid from reserves,boat where reserves.bid=boat.bid and color='green';
+
+select sailors.sid from sailors,reserves,boat where sailors.sid=reserves.sid and reserves.bid=boat.bid and color='red' union select sailors.sid from sailors,reserves,boat where sailors.sid=reserves.sid and reserves.bid=boat.bid and color='green';
+
+
+select sailors.sid,sname from sailors,reserves,boat where sailors.sid=reserves.sid intersect select sailors.sid,sname from sailors,reserves,boat where reserves.bid=boat.bid and bid=103;
+
+select sname,age from sailors intersect select sname,age from sailors where age in(select min(age) from sailors) ;
+
+select sname from sailors,reserves,boat where reserves.bid=boat.bid select sname from sailors,reserves where sailors.sid=reserves.sid ;
+
